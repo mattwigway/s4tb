@@ -1,0 +1,52 @@
+%!TEX engine=lualatex
+\documentclass[aspectratio=169]{beamer}
+\input{headers.tex}
+
+\title{Statistics and Econometrics for Travel Behavior}
+\author{Matthew Wigginton Conway\\School of Geographical Sciences and Urban Planning, Arizona State University}
+% the school logo is not included in the source distribution due to licensing requirements
+\IfFileExists{sgsup.eps}{\date{\today\\Version: 1.0\\ \vspace{1cm}\includegraphics[height=0.4in]{sgsup.eps}}}{\date{\today\\Version: 1.0}}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Table of contents}
+  \tableofcontents
+\end{frame}
+
+\section{Linear regression}
+\input{linear_regression_basic.tex}
+\input{linear_regression_advanced.tex}
+
+\section{Hypothesis testing}
+\input{hypothesis_testing.tex}
+
+\section{Discrete choice models}
+\input{discrete_choice_models.tex}
+
+\section{Factor analysis}
+\input{fa_basic.tex}
+\input{fa_advanced.tex}
+
+\section{Structural equation models}
+\input{sem.tex}
+\input{sem_advanced.tex}
+
+\section{Count models}
+\input{count.tex}
+
+\section{Ordered outcome models}
+\input{oprobit.tex}
+
+\section{Integrated choice and latent variable models}
+\input{iclv.tex}
+%\input{lecture_3_conclusion.tex}
+
+\begin{frame}[allowframebreaks]
+  \printbibliography
+\end{frame}
+
+\input{license.tex}
+
+\end{document}

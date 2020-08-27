@@ -1,0 +1,36 @@
+\usepackage[authordate]{biblatex-chicago}
+\addbibresource{bibliography.bib}
+\citetrackerfalse
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,tikzmark,positioning,decorations.text,decorations.pathmorphing}
+\usepackage{booktabs}
+\usepackage{ulem}
+\usepackage{adjustbox}
+\usepackage{amssymb}
+\usepackage{bibentry}
+\usepackage[symbol]{footmisc}
+
+\usepackage{fontspec}
+\setmainfont{Roboto}
+\setsansfont{Roboto}
+
+\setbeamertemplate{navigation symbols}{}%remove navigation symbols
+
+\usepackage{tikz}
+
+\definecolor{ASUMaroon}{RGB}{140,29,64}
+\definecolor{ASUGold}{RGB}{255,198,39}
+\setbeamercolor{frametitle}{fg=ASUMaroon,bg=white}
+\setbeamercolor{itemize item}{fg=ASUGold}
+\setbeamercolor{itemize subitem}{fg=ASUGold}
+\setbeamercolor{itemize subsubitem}{fg=ASUGold}
+\setbeamercolor{titlelike}{fg=ASUMaroon}
+\setbeamercolor{enumerate item}{fg=ASUMaroon}
+\setbeamercolor{enumerate subitem}{fg=ASUMaroon}
+
+\usepackage{xcolor}
+\renewcommand{\emph}[1]{\colorbox{ASUGold}{#1}}
+
+\usepackage{microtype}
+
+\newcommand{\citenhts}{Data: \href{https://nhts.ornl.gov/}{2017 NHTS}}
