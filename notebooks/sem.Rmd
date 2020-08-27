@@ -1,0 +1,65 @@
+---
+title: "Structural equation model examples"
+author: "Matthew Wigginton Conway"
+date: "8/21/2019"
+output: html_document
+---
+
+This code estimates the example SEM in the slides.
+
+```{r setup, include=FALSE}
+library(lavaan)
+```
+
+```{r}
+# read biogeme data
+data <- read.table('../data/optima.dat', sep='\t', header=T)
+data <- subset(data, Income > 0 & age > 0 & OwnHouse > 0 & NbCar > 0 & Envir03 > 0 & Envir05 > 0 & Envir06 > 0 & Mobil12 > 0 & Mobil14 > 0 & Mobil13 > 0 & NbRoomsHouse > 0)
+data$howner <- as.integer(data$OwnHouse == 1)
+data$incomeCHF <- c(1250, 3250, 5000, 7000, 9000, 11000)[data$Income] / 1000
+data$trpass <- as.integer(with(data, HalfFareST == 1 | LineRelST == 1 | GenAbST == 1 | AreaRelST == 1 | OtherST == 1))
+```
+
+```{r}
+# Specify the CFA (measurement) model
+mod <- '
+  env =~ 1*Envir06 + Envir05 + Envir03
+  carlover =~ 1*Mobil12 + Mobil13 + Mobil14
+  ses =~ 1*howner + incomeCHF + NbRoomsHouse
+  env ~~ carlover
+'
+cfaFit <- sem(mod, data)
+summary(cfaFit, fit.measures=T)
+```
+
+```{r}
+# Specify the SEM model
+semmod <- '
+  env =~ 1*Envir06 + Envir05 + Envir03
+  carlover =~ 1*Mobil12 + Mobil13 + Mobil14
+  ses =~ 1*howner + incomeCHF + NbRoomsHouse
+  env ~~ carlover
+
+  NbCar ~ env + carlover + ses
+  trpass ~ env + carlover + ses + NbCar
+'
+semFit <- sem(semmod, data)
+summary(semFit, fit.measures=T)
+```
+
+```{r}
+# Specify the alternate model
+altmod <- '
+  env =~ 1*Envir06 + Envir05 + Envir03
+  carlover =~ 1*Mobil12 + Mobil13 + Mobil14
+  ses =~ 1*howner + incomeCHF + NbRoomsHouse
+  env ~~ carlover
+
+  env ~ ses
+  carlover ~ ses
+  NbCar ~ env + carlover + ses
+  trpass ~ env + carlover + ses + NbCar
+'
+altFit <- sem(altmod, data)
+summary(altFit, fit.measures=T)
+```
