@@ -3,3 +3,7 @@ This repository contains the LaTeX source for the slides for my [Statistics for 
 Code to create the original images and analysis on the slides is in the `notebooks` folder. Some of these require the [CSV version of the 2017 NHTS](https://nhts.ornl.gov) or the [Mode choice in Switzerland example data from biogeme](http://biogeme.epfl.ch/data.html) to be available in the `data` folder.
 
 These slides were created with support from the [Center for Teaching Old Models New Tricks](https://tomnet-utc.engineering.asu.edu/) at [Arizona State University](https://asu.edu), a University Transportation Center funded by the [United States Department of Transportation](https://www.transportation.gov/).
+
+## Changelog
+
+Version 1.1: fix interpolation on count model probability visualizations.
